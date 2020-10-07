@@ -15,7 +15,14 @@ class CreatePresencesTable extends Migration
     {
         Schema::create('presences', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id');
+            $table->string('photo');
+            $table->string('latitude');
+            $table->string('longtitude');
+            $table->text('address');
+            $table->dateTime('created_at');
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

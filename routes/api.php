@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PresenceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,6 @@ Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
 Route::get('logout',[AuthController::class,'logout'])->middleware('jwtAuth');
 Route::post('update',[AuthController::class,'updateUser']);
+
+Route::get('presence',[PresenceController::class,'presence'])->middleware('jwtAuth');
+Route::post('presence/create',[PresenceController::class,'create'])->middleware('jwtAuth');
